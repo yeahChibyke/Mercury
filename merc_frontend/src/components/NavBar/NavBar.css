@@ -1,0 +1,17 @@
+nav ul li {
+    position: relative;
+}
+
+nav ul li::before {
+    content: "";
+    transition: all 0.7s ease;
+    background-color: rgb(0, 0, 0);
+    width: 0;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+}
+
+nav ul li:hover::before {
+    width: 100%;
+}
