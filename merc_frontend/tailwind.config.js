@@ -8,6 +8,7 @@ module.exports = {
         merienda:["Merienda", "cursive"],
         quicksand:["Quicksand", "sans-serif"],
         poppins:["Poppins", "sans-serif"],
+        aboreto:["Aboreto", "system-ui"],
       }
     },
   },

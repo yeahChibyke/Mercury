@@ -1,0 +1,36 @@
+import React from "react";
+import CustomButton from "../CustomButton/CustomButton";
+import "./Hero.css";
+import planets from "../../assets/images/planetshero.png";
+import { FaBars } from "react-icons/fa";
+
+export default function Hero() {
+  return (
+    <>
+      <header className="w-full px-[1rem] md:px-[5rem] xl:w-[80%] mt-[5rem] lg:mt-[15rem] flex flex-col lg:flex-row justify-center items-center">
+        <div className="w-full lg:w-[50%] flex flex-col justify-center items-center lg:items-start">
+          <h1 className="text-5xl font-aboreto font-[600] gradient-text mb-10 merc-big">MERCURY</h1>
+          <hr className="rule" />
+          <br />
+          <hr className="rule" /> <br />
+          <hr className="rule" />
+          <br />
+          <p className="text-2xl text-center lg:text-left mb-10 relative empty">
+            Leading Wallet Notification System for agEUR Hodl-ers.
+          </p>
+          <div>
+            <CustomButton
+              title="SIGN UP"
+              classes={"transit hero-btn text-lg py-[10px] px-[40px]"}
+            />
+          </div>
+        </div>
+        <div className="w-full lg:w-[50%] flex justify-center lg:justify-end items-center">
+          <div className="w-full flex justify-end planet-ring mt-[3rem] lg:mt-0">
+            <img src={planets} alt="" className="planet" />
+          </div>
+        </div>
+      </header>
+    </>
+  );
+}
