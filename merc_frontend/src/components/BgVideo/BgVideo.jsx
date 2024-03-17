@@ -6,7 +6,7 @@ export default function BgVideo({ children }) {
   
   return (
     <>
-      <div className="hero px-[1rem] md:px-[5rem] pt-[2rem]">
+      <div className="hero">
         {children}
         <video autoPlay loop muted playsInline className="video">
           <source src={VideoBg} type="video/mp4"/>

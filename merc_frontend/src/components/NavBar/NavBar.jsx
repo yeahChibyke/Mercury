@@ -34,34 +34,39 @@ export default function NavBar() {
 
   return (
     <>
-      <header>
+      <header className={`px-[1rem] md:px-[5rem] pt-[2rem] pb-[1rem] sticky top-0 left-0 right-0 z-[5] bg-[]`}>
         <nav className="w-full flex justify-between items-center">
           <div className="w-[50%]">
             <div className="w-fit border-[2px] border-[#000] rounded-full">
+              <NavLink to="/">
               <img src={logo} alt="logo.jpg" className="w-full h-auto" />
+              </NavLink>
             </div>
           </div>
           <button
-            className="md:hidden fixed right-[4%] top-[8%] z-[2] transform scale-[1.2]"
+            className="md:hidden fixed right-[7%] md:top-[11%] z-[2] transform scale-[1.2]"
             onClick={toggleNav}
           >
             {showNav ? <FiX /> : <FaBars />}
           </button>
           <ul
-            className={`transit font-quicksand w-[50%] flex md:justify-end md:items-center md:gap-[10rem] ${
+            className={`transit font-quicksand w-[50%] flex md:justify-end md:items-center md:gap-[5rem] ${
               isMobile &&
               `fixed w-[9rem] flex-col gap-[1rem] ${
                 showNav ? "right-0" : "right-[-50%]"
               }`
             }`}
           >
-            <li className="font-[600] w-fit">
+            <li className="font-[500] w-fit">
               <NavLink to="/">HOME</NavLink>
             </li>
-            <li className="font-[600] w-fit">
+            <li className="font-[500] w-fit whitespace-nowrap">
+              <NavLink to="/aboutus">ABOUT US</NavLink>
+            </li>
+            <li className="font-[500] w-fit">
               <NavLink to="/documentation">DOCS</NavLink>
             </li>
-            <li className="font-[600] w-fit">
+            <li className="font-[500] w-fit">
               <NavLink to="/support">SUPPORT</NavLink>
             </li>
           </ul>

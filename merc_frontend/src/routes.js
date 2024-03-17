@@ -3,6 +3,7 @@ import { useRoutes } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import Support from "./pages/Support/Support";
 import Docs from "./pages/Documentation/Docs";
+import AboutUs from "./pages/AboutUs/AboutUs";
 
 export default function Router() {
   const routes = useRoutes([
@@ -18,6 +19,10 @@ export default function Router() {
     {
       path: "/documentation",
       element: <Docs />,
+    },
+    {
+      path: "/aboutus",
+      element: <AboutUs />,
     },
   ]);
   return routes;
