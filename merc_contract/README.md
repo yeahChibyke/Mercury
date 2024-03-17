@@ -1,66 +1,30 @@
-## Foundry
+## Pseudo-Steps
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+- ### Smart Contracts for Token Monitoring:
 
-Foundry consists of:
+    Develop smart contracts that can monitor token transfers for the agEUR token. The smart contract should emit events for token transfers, including the amount and the sender and receiver addresses.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- ### Tenderly for Real-Time Alerting:
 
-## Documentation
+    Utilize Tenderly's (or any suitable alternative) alerting system to monitor these token transfer events in real-time. Tenderly can be configured to send alerts to a webhook endpoint whenever a token transfer event occurs.
 
-https://book.getfoundry.sh/
+- ### Webhook Endpoint:
 
-## Usage
+    Create a webhook endpoint on the server that will receive alerts from Tenderly. This endpoint should be capable of processing the JSON data sent by Tenderly and extracting the necessary information about the token transfer event.
 
-### Build
+- ### Email Notification System:
 
-```shell
-$ forge build
-```
+    Implement an email notification system on the server. When the webhook endpoint receives an alert from Tenderly, it should process the alert data and send an email notification to the user. An email service provider can be used to send these emails.
 
-### Test
+- ### User Subscription Management:
 
-```shell
-$ forge test
-```
+    Develop a system to manage user subscriptions. Users should be able to opt-in or opt-out of receiving notifications for specific tokens. This system should store user preferences and ensure that only subscribed users receive notifications.
 
-### Format
+- ### Security and Privacy Considerations:
 
-```shell
-$ forge fmt
-```
+    Ensure that **Mercury** complies with privacy regulations and best practices for handling user data. Implement authentication and authorization mechanisms to protect user data and ensure that only authorized users can subscribe or unsubscribe from notifications.
 
-### Gas Snapshots
+- ### Testing and Deployment:
 
-```shell
-$ forge snapshot
-```
+    Thoroughly test Mercury to ensure that it correctly monitors token transfers, sends alerts to the webhook endpoint, and sends email notifications to users. Once testing is complete, deploy smart contracts and server-side components to a production environment.
 
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
