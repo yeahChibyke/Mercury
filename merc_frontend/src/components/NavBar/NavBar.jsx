@@ -40,22 +40,34 @@ export default function NavBar() {
       setIsScrolled(scrolled);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     // Remove the event listener on cleanup
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
+  const handleClick = () => {
+    window.open("https://docs.angle.money/overview/readme", "_blank");
+  };
+
   return (
     <>
-      <header className={`px-[1rem] md:px-[5rem] pt-[2rem] pb-[1rem] sticky top-0 left-0 right-0 z-[500] ${isScrolled ? "scroll" : ""}`}>
+      <header
+        className={`px-[1rem] md:px-[5rem] pt-[2rem] pb-[1rem] sticky top-0 left-0 right-0 z-[500] ${
+          isScrolled ? "scroll" : ""
+        }`}
+      >
         <nav className="w-full flex justify-between items-center">
           <div className="w-[50%]">
-            <div className={`w-fit border-[2px] border-[#000] rounded-full ${isScrolled ? "border-[#ffff]" : ""}`}>
+            <div
+              className={`w-fit border-[2px] border-[#000] rounded-full ${
+                isScrolled ? "border-[#ffff]" : ""
+              }`}
+            >
               <NavLink to="/">
-              <img src={logo} alt="logo.jpg" className="w-full h-auto" />
+                <img src={logo} alt="logo.jpg" className="w-full h-auto" />
               </NavLink>
             </div>
           </div>
@@ -69,7 +81,11 @@ export default function NavBar() {
             className={`transit font-quicksand w-[50%] flex md:justify-end md:items-center md:gap-[5rem] ${
               isMobile &&
               `fixed w-[9rem] flex-col gap-[1rem] ${
-                showNav ? `right-0 top-0 px-2 h-[9.1rem] gap-[0.8rem] ${isScrolled && "text-white bg-[#024e57f1]"}` : "right-[-50%]"
+                showNav
+                  ? `right-0 top-0 px-2 h-[9.1rem] gap-[0.8rem] ${
+                      isScrolled && "text-white bg-[#024e57f1]"
+                    }`
+                  : "right-[-50%]"
               }`
             }`}
           >
@@ -79,8 +95,11 @@ export default function NavBar() {
             <li className="font-[500] w-fit whitespace-nowrap">
               <NavLink to="/aboutus">ABOUT US</NavLink>
             </li>
-            <li className="font-[500] w-fit">
-              <NavLink to="/documentation">DOCS</NavLink>
+            <li
+              onClick={handleClick}
+              className="font-[500] w-fit whitespace-nowrap cursor-pointer"
+            >
+              ANGLE DOCS
             </li>
             <li className="font-[500] w-fit">
               <NavLink to="/support">SUPPORT</NavLink>
