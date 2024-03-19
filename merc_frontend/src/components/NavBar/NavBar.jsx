@@ -82,8 +82,8 @@ export default function NavBar() {
               isMobile &&
               `fixed w-[9rem] flex-col gap-[1rem] ${
                 showNav
-                  ? `right-0 top-0 px-2 h-[9.1rem] gap-[0.8rem] ${
-                      isScrolled && "text-white bg-[#024e57f1]"
+                  ? `right-[5%] top-0 px-2 h-[9.1rem] gap-[0.8rem] ${
+                      isScrolled && "text-white bg-[#354845]"
                     }`
                   : "right-[-50%]"
               }`
