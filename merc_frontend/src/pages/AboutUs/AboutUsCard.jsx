@@ -8,7 +8,7 @@ export default function AboutUsCard({
 }) {
   return (
     <>
-      <div className="transit card w-[23rem] h-[18rem] mb-[5rem] relative rounded-xl text-white p-[1rem] bg-[#000000a6]">
+      <div className="transit card w-[23rem] h-[18.5rem] mb-[5rem] relative rounded-xl text-white p-[1rem] bg-[#000000a6]">
         <div className="w-[80px] h-[80px] absolute top-[-15%] left-[39%] rounded-full overflow-hidden bg-white border-[2px] border-black">
           <img src={img} alt={img} className="w-full h-auto transform scale-[1]"/>
         </div>

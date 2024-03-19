@@ -20,7 +20,12 @@
   width: 30rem;
   border-radius: 50px;
   border: 4px solid black;
-  box-shadow: -21px 18px 31px -7px rgba(0,0,0,0.75);
+  box-shadow: -21px 18px 31px -7px rgba(0, 0, 0, 0.445);
+}
+
+.planet-ring:hover {
+  transform: translateY(10px);
+  box-shadow: none;
 }
 
 .planet {
