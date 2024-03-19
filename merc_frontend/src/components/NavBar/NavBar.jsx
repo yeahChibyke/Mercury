@@ -32,12 +32,28 @@ export default function NavBar() {
     setShowNav(!showNav);
   };
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY > 0;
+      setIsScrolled(scrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Remove the event listener on cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <header className={`px-[1rem] md:px-[5rem] pt-[2rem] pb-[1rem] sticky top-0 left-0 right-0 z-[5] bg-[]`}>
+      <header className={`px-[1rem] md:px-[5rem] pt-[2rem] pb-[1rem] sticky top-0 left-0 right-0 z-[500] ${isScrolled ? "scroll" : ""}`}>
         <nav className="w-full flex justify-between items-center">
           <div className="w-[50%]">
-            <div className="w-fit border-[2px] border-[#000] rounded-full">
+            <div className={`w-fit border-[2px] border-[#000] rounded-full ${isScrolled ? "border-[#ffff]" : ""}`}>
               <NavLink to="/">
               <img src={logo} alt="logo.jpg" className="w-full h-auto" />
               </NavLink>
@@ -53,7 +69,7 @@ export default function NavBar() {
             className={`transit font-quicksand w-[50%] flex md:justify-end md:items-center md:gap-[5rem] ${
               isMobile &&
               `fixed w-[9rem] flex-col gap-[1rem] ${
-                showNav ? "right-0" : "right-[-50%]"
+                showNav ? `right-0 top-0 px-2 h-[9.1rem] gap-[0.8rem] ${isScrolled && "text-white bg-[#024e57f1]"}` : "right-[-50%]"
               }`
             }`}
           >

@@ -9,10 +9,15 @@ nav ul li::before {
     width: 0;
     height: 3px;
     position: absolute;
-    bottom: 0;
+    bottom: -10%;
 }
 
 nav ul li:hover::before {
     width: 100%;
 }
 
+.scroll {
+    background-color:#024e57f1;
+    color: white;
+    box-shadow: -1px 3px 9px 0px rgba(0,0,0,0.75);
+}

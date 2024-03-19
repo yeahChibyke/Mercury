@@ -6,11 +6,10 @@ import BgVideo from "./components/BgVideo/BgVideo";
 function App() {
   return (
     <>
-      <BgVideo>
-        <BrowserRouter>
-          <Routes />
-        </BrowserRouter>
-      </BgVideo>
+      <BrowserRouter>
+        <BgVideo />
+        <Routes />
+      </BrowserRouter>
     </>
   );
 }

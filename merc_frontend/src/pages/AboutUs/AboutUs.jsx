@@ -29,7 +29,7 @@ export default function AboutUs() {
   return (
     <>
       <NavBar />
-      <div className="w-full px-[1rem] md:px-[5rem] flex justify-center items-center">
+      <div className="z-[10] relative w-full px-[1rem] md:px-[5rem] flex justify-center items-center">
         <div className="w-full xl:w-[80%] mt-[5rem] flex flex-col justify-center items-center">
           <h1 className="text-5xl mb-[2rem]">About Us</h1>
           <p className="text-3xl w-full max-w-[300px] flex justify-center items-center whitespace-nowrap bg-[#000000a6] px-[5rem] rounded-xl text-white">
