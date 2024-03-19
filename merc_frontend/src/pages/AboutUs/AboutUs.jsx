@@ -50,8 +50,8 @@ export default function AboutUs() {
         <p className="text-5xl font-[500] text-center mb-[2rem]">
           Why It Matters
         </p>
-        <div className="w-full flex flex-wrap justify-around items-center p-5 gap-[3rem]">
-          <div className="w-full h-[20rem] lg:w-[20rem] flex flex-col justify-center items-center p-5">
+        <div className="w-full flex flex-wrap justify-around items-center px-5 gap-[3rem]">
+          <div className="w-full h-[20rem] lg:w-[20rem] flex flex-col justify-center items-center p-5 border rounded-xl">
             <p className="text-center text-[20px] mb-[1rem]">
               REAL TIME AWARENESS
             </p>
@@ -63,7 +63,7 @@ export default function AboutUs() {
               real-time updates and take immediate action.
             </p>
           </div>
-          <div className="w-full h-[20rem] lg:w-[20rem] flex flex-col justify-center items-center p-5">
+          <div className="w-full h-[20rem] lg:w-[20rem] flex flex-col justify-center items-center p-5 border rounded-xl">
             <p className="text-center text-[20px] mb-[1rem]">
               INFORMED FINANCIAL DECISSION MAKING
             </p>
@@ -76,7 +76,7 @@ export default function AboutUs() {
               advantage.
             </p>
           </div>
-          <div className="w-full h-[20rem] lg:w-[20rem] flex flex-col justify-center items-center p-5">
+          <div className="w-full h-[20rem] lg:w-[20rem] flex flex-col justify-center items-center p-5 border rounded-xl">
             <p className="text-center text-[20px] mb-[1rem]">
               MARKET FLEXIBILITY
             </p>
