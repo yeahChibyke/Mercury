@@ -1,30 +1,51 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.17;
+// Compatible with OpenZeppelin Contracts ^5.0.0
+pragma solidity ^0.8.20;
 
-contract MercEUR {
-    string public name = "MercEUR";
-    uint256 public totalSupply = 100000000000000000000;
-    uint8 public decimals = 18;
+import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import {ERC20Burnable} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
-    mapping(address => uint256) mercEURBalance;
+/**
+ * @title MercEUR
+ * @author yeahChibyke
+ * Collateral: Crypto-collaterized
+ * Minting: Algorithmic
+ * Relative Stability: Anchored to the EUR
+ * @notice This contract is just the ERC20 implementation of the mercEUR stablecoin. It will be governed by the MercEngine.
+ */
 
-    // function for holders to check their mercEUR balance
-    function checkMercEURBalance(address user) public view returns (uint256) {
-        return mercEURBalance[user];
+contract MercEUR is ERC20, ERC20Burnable, Ownable {
+    /* Errors */
+
+    error MercEUR__MustBeMoreThanZero();
+    error MercEUR__BurnAmountMoreThanBalance();
+    error MercEUR__AddressNotValid();
+
+    constructor() ERC20("MercEUR", "MEU") {}
+
+    function burn(uint256 _amount) external override onlyOwner {
+        uint256 balance = balanceOf(msg.sender);
+        if (_amount <= 0) {
+            revert MercEUR__MustBeMoreThanZero();
+        }
+        if (_amount > balance) {
+            revert MercEUR__BurnAmountMoreThanBalance();
+        }
+        super.burn(_amount);
     }
 
-    // function to transfer MercEUR
-    function sendMercEUR(
-        address payable receiver,
-        uint256 amount
-    ) public payable {
-        uint256 userMercEURBalance = mercEURBalance[msg.sender];
-        require(userMercEURBalance >= amount, "You don't have enough MercEUR!");
-
-        (bool success, ) = receiver.call{value: amount}("");
-        require(success, "Failed to send MercEUR!");
-
-        mercEURBalance[msg.sender] = userMercEURBalance - amount;
-        mercEURBalance[receiver] += amount;
+    function mint(
+        address _to,
+        uint256 _amount
+    ) external onlyOwner returns (bool) {
+        if (_to == address(0)) {
+            revert MercEUR__AddressNotValid();
+        }
+        if (_amount <= 0) {
+            revert MercEUR__MustBeMoreThanZero();
+        }
+        _mint(_to, _amount);
+        return true;
     }
 }
