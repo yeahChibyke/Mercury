@@ -2,9 +2,9 @@
 // Compatible with OpenZeppelin Contracts ^5.0.0
 pragma solidity ^0.8.20;
 
-import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import {ERC20Burnable} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
-import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 /**
  * @title MercEUR
@@ -22,9 +22,13 @@ contract MercEUR is ERC20, ERC20Burnable, Ownable {
     error MercEUR__BurnAmountMoreThanBalance();
     error MercEUR__AddressNotValid();
 
-    constructor() ERC20("MercEUR", "MEU") {}
+    /* Constructor */
 
-    function burn(uint256 _amount) external override onlyOwner {
+    constructor(address Mercury) ERC20("MercEUR", "MEU") Ownable(Mercury) {}
+
+    /* Functions */
+
+    function burn(uint256 _amount) public override onlyOwner {
         uint256 balance = balanceOf(msg.sender);
         if (_amount <= 0) {
             revert MercEUR__MustBeMoreThanZero();
