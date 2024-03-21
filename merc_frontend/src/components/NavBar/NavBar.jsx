@@ -102,7 +102,7 @@ export default function NavBar() {
               ANGLE DOCS
             </li>
             <li className="font-[500] w-fit">
-              <NavLink to="/support">SUPPORT</NavLink>
+              <NavLink to="/signup">SIGN UP</NavLink>
             </li>
           </ul>
         </nav>

@@ -4,6 +4,7 @@ import test1 from "../../assets/images/userTest1.jpg";
 import test2 from "../../assets/images/userTest2.jpg";
 import test3 from "../../assets/images/userTest3.jpg";
 import test4 from "../../assets/images/userTest4.jpg";
+import CustomButton from "../CustomButton/CustomButton";
 
 export default function Testimonial () {
   const data = [
@@ -45,6 +46,12 @@ export default function Testimonial () {
             <TestimonialCard key={index} {...each} />
           ))}
         </div>
+        <div>
+            <CustomButton
+              title="REGISTER"
+              classes={"transit hero-btn text-lg py-[10px] px-[40px]"}
+            />
+          </div>
       </div>
     </>
   );
