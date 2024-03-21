@@ -1,9 +1,10 @@
 import React from "react";
 import { useRoutes } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
-import Support from "./pages/Support/Support";
+import SignUp from "./pages/SignUp/SignUp";
 import Docs from "./pages/Documentation/Docs";
 import AboutUs from "./pages/AboutUs/AboutUs";
+import SignIn from "./pages/SignIn/SignIn";
 
 export default function Router() {
   const routes = useRoutes([
@@ -13,8 +14,8 @@ export default function Router() {
       index: true,
     },
     {
-      path: "/support",
-      element: <Support />,
+      path: "/signup",
+      element: <SignUp />,
     },
     {
       path: "/documentation",
@@ -23,6 +24,10 @@ export default function Router() {
     {
       path: "/aboutus",
       element: <AboutUs />,
+    },
+    {
+      path: "/signin",
+      element: <SignIn />,
     },
   ]);
   return routes;
