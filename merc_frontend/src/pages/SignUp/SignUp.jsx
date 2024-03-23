@@ -84,6 +84,15 @@ export default function SignUp() {
       // send data to wherever it's going here
       console.log(formData);
       //
+      registerUser();
+    }
+  };
+
+  // register new user
+  const registerUser = async (e) => {
+    e?.preventDefault();
+    try {
+      await signUp(formData.email, formData.password);
       setBad(false);
       setTitle("Success");
       setSubitle("successful");
@@ -94,10 +103,16 @@ export default function SignUp() {
         password: "",
         confirm: "",
       });
+    } catch (error) {
+      console.log(error);
+      setTitle("Error");
+      setSubitle(error.message);
+      setBad(true);
+      errorAlert();
     }
   };
 
-  // ahndle error alert
+  // handle error alert
   const errorAlert = () => {
     setAlert(true);
     setTimeout(() => {
@@ -105,7 +120,7 @@ export default function SignUp() {
     }, 2000);
   };
 
-  // handle modal
+  // handle modal alert
   const handleAlert = () => {
     setAlert(true);
     setTimeout(() => {
@@ -171,7 +186,7 @@ export default function SignUp() {
               />
             </div>
             <div className="w-full max-w-[40rem] mb-[0.5rem]">
-              <label htmlFor="psword">Password:</label>
+              <label htmlFor="password">Password:</label>
               <br />
               <div className="relative">
                 <input
@@ -200,7 +215,7 @@ export default function SignUp() {
               </div>
             </div>
             <div className="w-full max-w-[40rem] mb-[0.5rem]">
-              <label htmlFor="comword">Confirm Password:</label>
+              <label htmlFor="confirm">Confirm Password:</label>
               <br />
               <div className="relative">
                 <input
@@ -230,7 +245,6 @@ export default function SignUp() {
             </div>
             <div>
               <CustomButton
-                onclick={handleSubmit}
                 title="Create Account"
                 classes={"mt-[2rem] mb-[2rem]"}
                 type={"submit"}

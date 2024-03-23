@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "../../components/NavBar/NavBar";
 import AboutUsCard from "./AboutUsCard";
 import problem from "../../assets/images/problem.png";
 import solution from "../../assets/images/solution.png";
@@ -28,7 +27,6 @@ export default function AboutUs() {
   ];
   return (
     <>
-      <NavBar />
       <div className="z-[10] relative w-full px-[1rem] md:px-[5rem] flex justify-center items-center">
         <div className="w-full xl:w-[80%] mt-[5rem] flex flex-col justify-center items-center">
           <h1 className="text-5xl mb-[2rem] font-[500]">About Us</h1>

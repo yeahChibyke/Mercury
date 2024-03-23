@@ -2,7 +2,11 @@ nav ul li {
     position: relative;
 }
 
-nav ul li::before {
+nav ul {
+    transition: all 0.5s ease;
+}
+
+.under::before {
     content: "";
     transition: all 0.7s ease;
     background-color: rgb(0, 0, 0);
@@ -19,5 +23,9 @@ nav ul li:hover::before {
 .scroll {
     background-color:rgb(53, 72, 69);
     color: white;
+    box-shadow: -1px 3px 9px 0px rgba(0,0,0,0.75);
+}
+
+.from-up {
     box-shadow: -1px 3px 9px 0px rgba(0,0,0,0.75);
 }

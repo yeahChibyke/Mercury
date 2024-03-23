@@ -5,6 +5,7 @@ import HowItWorks from "../../components/HowItWorks/HowItWorks";
 import Why from "../../components/Why/Why";
 import Testimonial from "../../components/Testimonial/Testimonial";
 import Footer from "../../components/Footer/Footer";
+import AboutUs from "../../components/AboutUs/AboutUs";
 
 export default function HomePage() {
   return (
@@ -19,6 +20,7 @@ export default function HomePage() {
       <div className="w-full flex justify-center items-center">
         <Why />
       </div>
+      <AboutUs />
       <div className="w-full flex justify-center items-center">
         <Testimonial />
       </div>
