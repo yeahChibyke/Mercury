@@ -3,8 +3,10 @@ import { useRoutes } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import SignUp from "./pages/SignUp/SignUp";
 import Docs from "./pages/Documentation/Docs";
-import AboutUs from "./pages/AboutUs/AboutUs";
+import AboutUs from "./components/AboutUs/AboutUs";
 import SignIn from "./pages/SignIn/SignIn";
+import Account from "./pages/Account/Account";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function Router() {
   const routes = useRoutes([
@@ -28,6 +30,14 @@ export default function Router() {
     {
       path: "/signin",
       element: <SignIn />,
+    },
+    {
+      path: "/account",
+      element: (
+        <ProtectedRoute>
+          <Account />
+        </ProtectedRoute>
+      ),
     },
   ]);
   return routes;
