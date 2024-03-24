@@ -1,4 +1,7 @@
 import React from "react";
+import { FiX } from "react-icons/fi";
+import { FaCheck } from 'react-icons/fa';
+
 
 export default function InteractModal({
   title = "Title",
@@ -22,13 +25,13 @@ export default function InteractModal({
               onClick={close}
               className="shrink bg-gray-600 px-3 py-1 m-1 rounded cursor-pointer text-white text-sm"
             >
-              Close
+              <FiX />
             </button>
             <button
               onClick={logout}
               className="shrink bg-red-600 px-3 py-1 m-1 rounded cursor-pointer text-white text-sm"
             >
-              Yes, Logout
+              <FaCheck /> 
             </button>
           </div>
         </div>

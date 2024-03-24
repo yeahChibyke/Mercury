@@ -6,6 +6,8 @@ import AlertModal from "../../components/Modals/AlertModal";
 import { FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 import { UserAuth } from "../../context/AuthContext";
+import { db } from "../../firebase/firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 export default function SignUp() {
   const { user, signUp } = UserAuth();
@@ -16,10 +18,10 @@ export default function SignUp() {
 
   //state for alert modal
   const [alert, setAlert] = useState(false);
-  // state for mood of modal, good news or bad news
+  // state for mood of alertt modal, good news or bad news
   const [bad, setBad] = useState(false);
 
-  // state for modal title and subtitle
+  // state for alert modal title and subtitle
   const [title, setTitle] = useState("");
   const [subtitle, setSubitle] = useState("");
 
@@ -93,9 +95,14 @@ export default function SignUp() {
     e?.preventDefault();
     try {
       await signUp(formData.email, formData.password);
+      // Set user data in Firestore
+      const userRef = doc(db, "users", formData.email);
+      await setDoc(userRef, {
+        username: formData.username,
+      });
       setBad(false);
-      setTitle("Success");
-      setSubitle("successful");
+      setTitle("Account created");
+      setSubitle("Logging you In...");
       handleAlert();
       setFormData({
         email: "",
