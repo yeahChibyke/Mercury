@@ -1,17 +1,16 @@
 .modal-inter {
-    transition: all 0.4s ease-in-out;
-    position: fixed;
-    top: -50%;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.836);
-    z-index: 2001;
-    padding: 2rem;
-    border-radius: 10px;
-    opacity: 0;
-  }
-  
-  .show-interact {
-    top: 0;
-    opacity: 1;
-  }
+  transition: all 0.4s ease-in-out;
+  position: fixed;
+  top: -50%;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.836);
+  z-index: 2001;
+  padding: 2rem;
+  opacity: 0;
+}
+
+.show-interact {
+  top: 0;
+  opacity: 1;
+}

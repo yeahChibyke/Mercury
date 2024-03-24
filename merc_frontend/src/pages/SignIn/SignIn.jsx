@@ -70,7 +70,7 @@ export default function SignIn() {
       await logIn(formData.email, formData.password);
       setBad(false);
       setTitle("Success");
-      setSubitle("successful");
+      setSubitle("Logging you in...");
       handleAlert();
       setFormData({
         email: "",
@@ -131,11 +131,11 @@ export default function SignIn() {
             className="w-[90%] rounded-xl max-w-[30rem] p-[2rem] flex flex-col justify-center items-center bg-[#000000a6] text-white"
           >
             <div className="w-full max-w-[40rem] mb-[0.5rem]">
-              <label htmlFor="username">Email:</label>
+              <label htmlFor="email">Email:</label>
               <br />
               <input
                 name="email"
-                id="username"
+                id="email"
                 type="text"
                 placeholder="Enter Email"
                 value={formData.email}

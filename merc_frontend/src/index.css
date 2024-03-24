@@ -28,7 +28,6 @@ body {
   background-color: rgba(0, 0, 0, 0.836);
   z-index: 2001;
   padding: 2rem;
-  border-radius: 10px;
   opacity: 0;
 }
 
@@ -47,7 +46,6 @@ body {
   background-color: rgba(0, 0, 0, 0.836);
   z-index: 2001;
   padding: 2rem;
-  border-radius: 10px;
   opacity: 0;
 }
 
@@ -55,3 +53,10 @@ body {
   top: 0;
   opacity: 1;
 }
+
+.hero-btn:hover {
+  background: none;
+  color: black;
+  border: 3px solid black;
+}
+
