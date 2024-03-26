@@ -34,6 +34,7 @@ contract MercEngine is ReentrancyGuard {
 
     mapping(address token => address priceFeed) private s_priceFeeds;
     mapping(address user => mapping(address token => uint256 amount)) private s_collateralDeposited;
+    mapping(address user => uint256 amountMEUMinted) private s_MEUMinted;
 
     MercEUR private immutable i_MercEUR;
 
@@ -76,7 +77,10 @@ contract MercEngine is ReentrancyGuard {
     function redeemCollateralForMEU() external {}
 
     /**
-     * @notice follows CEI pattern
+     * @notice follows CEI pattern:
+     *      modifiers perform checks
+     *      state changes are done proper in the function
+     * @notice IERC20 wraps collateral deposited by msg.sender
      * @dev Allows users to deposit collateral tokens into the contract.
      * @param tokenCollateralAddress The address of the token being deposited as collateral.
      * @param amountCollateral The amount of the token being deposited as collateral.
@@ -97,11 +101,41 @@ contract MercEngine is ReentrancyGuard {
 
     function redeemCollateral() external {}
 
-    function mintMEU() external {}
+    /**
+     * @notice follows CEI pattern
+     * @param amountMEUToMint amount of MEU to mint
+     * @notice they must have more collateral than the minimum threshold
+     */
+    function mintMEU(uint256 amountMEUToMint) external moreThanZero(amountMEUToMint) nonReentrant {
+        s_MEUMinted[msg.sender] += amountMEUToMint;
+    }
 
     function burnMEU() external {}
 
     function liquidate() external {}
 
     function getHealthFactor() external view {}
+
+    /* Private & Internal View Functions */
+
+    function _getAccountInformation(address user)
+        private
+        view
+        returns (uint256 totalMEUMinted, uint256 collateralValueInEUR)
+    {
+        totalMEUMinted = s_MEUMinted[user];
+    }
+
+    /**
+     * @notice returns how close to liquidation a user is
+     *      If a user goes below 1, they can get liquidated
+     */
+    function _healthFactor(address user) private view returns (uint256) {
+        (uint256 totalMEUMinted, uint256 collateralValueInEUR) = _getAccountInformation(user);
+    }
+
+    function _revertIfHealthFactorIsBroken(address user) internal view {
+        // 1. Check health factor; do they have enough collateral
+        // 2. Revert if they don't
+    }
 }
