@@ -69,17 +69,20 @@ export default function SignUp() {
       setSubitle("Password must be at least 8 characters long");
       setBad(true);
       errorAlert();
+    } else if (
+      !/\d/.test(formData.password) &&
+      !/[!@#$%^&*(),.?":{}]|<>]/.test(formData.password) &&
+      !/[A-Z]/.test(formData.password)
+    ) {
+      setTitle("Error");
+      setSubitle(
+        "must contain at least an uppercase, digit or a special character"
+      );
+      setBad(true);
+      errorAlert();
     } else if (formData.password !== formData.confirm) {
       setTitle("Error");
       setSubitle("Please Cofirm Password");
-      setBad(true);
-      errorAlert();
-    } else if (
-      !/\d/.test(formData.password) &&
-      !/[!@#$%^&*(),.?":{}]|<>]/.test(formData.password)
-    ) {
-      setTitle("Error");
-      setSubitle("must contain at least one symbol or one didgit");
       setBad(true);
       errorAlert();
     } else {
@@ -134,6 +137,36 @@ export default function SignUp() {
       setAlert(false);
       navigate("/");
     }, 2000);
+  };
+
+  // password strenght
+  const getPasswordStrength = (password) => {
+    if (password !== "") {
+      if (password.length < 8) {
+        return "Weak";
+      } else if (!/[A-Z]/.test(password) || !/\d/.test(password)) {
+        return "Strong";
+      } else if (!/[!@#$%^&*(),.?":{}]|<>]/.test(password)) {
+        return "Strong";
+      } else {
+        return "Very Strong";
+      }
+    }
+  };
+
+  // password strenght color
+  const getPasswordStrengthColor = (password) => {
+    if (password !== "") {
+      if (password.length < 8) {
+        return "red";
+      } else if (!/[A-Z]/.test(password) || !/\d/.test(password)) {
+        return "orange";
+      } else if (!/[!@#$%^&*(),.?":{}]|<>]/.test(password)) {
+        return "orange";
+      } else {
+        return "limegreen";
+      }
+    }
   };
 
   return (
@@ -193,7 +226,15 @@ export default function SignUp() {
               />
             </div>
             <div className="w-full max-w-[40rem] mb-[0.5rem]">
-              <label htmlFor="password">Password:</label>
+              <label htmlFor="password">
+                Password:{" "}
+                <span
+                  className="font-[600]"
+                  style={{ color: getPasswordStrengthColor(formData.password) }}
+                >
+                  {getPasswordStrength(formData.password)}
+                </span>
+              </label>
               <br />
               <div className="relative">
                 <input

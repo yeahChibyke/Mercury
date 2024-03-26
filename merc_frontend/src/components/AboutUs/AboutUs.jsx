@@ -28,8 +28,8 @@ export default function AboutUs() {
   return (
     <>
       <div className="z-[10] relative w-full px-[1rem] md:px-[5rem] flex justify-center items-center">
-        <div className="w-full xl:w-[80%] mt-[5rem] flex flex-col justify-center items-center">
-          <h1 className="text-5xl mb-[2rem] font-[500]">About Us</h1>
+        <div className="w-full 2xl:w-[80%] mt-[5rem] flex flex-col justify-center items-center">
+          <p className="text-5xl mb-[2rem] font-[500]">About Us</p>
           <p className="text-3xl w-full max-w-[300px] flex justify-center items-center whitespace-nowrap bg-[#000000a6] px-[5rem] rounded-xl text-white">
             Our Mission
           </p>
@@ -44,7 +44,7 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
-      <div className="relative z-[10] w-full mt-[2rem] py-[3rem] px-[1rem] md:px-[5rem] xl:px-[10rem] flex flex-col justify-center items-center bg-[#000000a6] text-white ">
+      <div className="relative z-[10] w-full mt-[2rem] py-[3rem] px-[1rem] md:px-[5rem] 2xl:px-[10rem] flex flex-col justify-center items-center bg-[#000000a6] text-white ">
         <p className="text-5xl font-[500] text-center mb-[2rem]">
           Why It Matters
         </p>
