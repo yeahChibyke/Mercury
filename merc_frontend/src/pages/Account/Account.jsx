@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { FiArrowLeft } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 import Username from "../../components/Username/Username";
@@ -27,7 +27,7 @@ export default function Account() {
           </p>
           <EditForm />
         </div>
-        <CustomButton title="Connect Wallet" classes={"hero-btn transit"}/>
+        <CustomButton title="Connect Wallet" classes={"hero-btn transit"} />
       </div>
     </>
   );

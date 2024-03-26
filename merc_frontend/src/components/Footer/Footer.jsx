@@ -8,7 +8,7 @@ export default function Footer() {
     <>
       <div className="w-full relative z-[10]">
         <img src={svg} alt="" />
-        <div className="relative z-[10] w-full px-[1rem] xl:px-[20rem] pb-[3rem] bg-[#354845] text-white flex justify-around items-start">
+        <div className="relative z-[10] mt-[-10px] w-full px-[1rem] xl:px-[20rem] pb-[3rem] bg-[#354845] text-white flex justify-around items-start">
           <div className="w-[30%]">
             <p className="font-merienda text-[20px] mb-[1rem]">Mercury</p>
             <ul className="flex flex-col gap-5 text-sm">
