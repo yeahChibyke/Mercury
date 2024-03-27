@@ -153,7 +153,7 @@ export default function NavBar() {
                 onClick={handleInteract}
                 className={`font-[500] w-fit cursor-pointer whitespace-nowrap rounded-full py-[0.3rem] px-[1rem] border-[2px] border-black bg-black text-white ${
                   (isMobile || isScrolled) &&
-                  "bg-white border-white text-green-900"
+                  "bg-none border-white text-green-900"
                 }`}
               >
                 LOG OUT
