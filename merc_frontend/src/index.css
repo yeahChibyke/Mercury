@@ -60,3 +60,62 @@ body {
   border: 3px solid black;
 }
 
+/* animations */
+
+.animated-right {
+  animation: slideInFromRight 1s ease-out forwards;
+}
+
+.animated-left {
+  animation: slideInFromLeft 1s ease-out forwards;
+}
+
+.animated-bottom {
+  animation: slideInFromBottom 1s ease-out forwards;
+}
+
+.animated-fade {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
