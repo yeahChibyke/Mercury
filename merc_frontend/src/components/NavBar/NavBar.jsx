@@ -141,11 +141,11 @@ export default function NavBar() {
               </li>
             ) : (
               <li
-                className={`font-[500] w-fit whitespace-nowrap rounded-full border-[2px] border-black py-[0.3rem] px-[1rem] ${
+                className={`font-[500] w-fit whitespace-nowrap rounded-full border-[2px] border-black py-[0.3rem] px-[1rem] hover:bg-black hover:text-white ${
                   (isMobile || isScrolled) && "border border-white"
                 }`}
               >
-                <NavLink to="/signin">SIGN IN</NavLink>
+                <NavLink to="/signup">SIGN UP</NavLink>
               </li>
             )}
             {user?.email ? (
@@ -160,7 +160,7 @@ export default function NavBar() {
               </li>
             ) : (
               <li
-                className={`font-[500] w-fit whitespace-nowrap rounded-full py-[0.3rem] px-[1rem] border-[2px] border-black bg-black text-white ${
+                className={`font-[500] hidden w-fit whitespace-nowrap rounded-full py-[0.3rem] px-[1rem] border-[2px] border-black bg-black text-white ${
                   (isMobile || isScrolled) &&
                   "bg-none border-white text-green-900"
                 }`}

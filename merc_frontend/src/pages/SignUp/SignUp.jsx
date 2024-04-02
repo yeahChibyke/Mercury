@@ -102,6 +102,7 @@ export default function SignUp() {
       const userRef = doc(db, "users", formData.email);
       await setDoc(userRef, {
         username: formData.username,
+        wallet: "",
       });
       setBad(false);
       setTitle("Account created");
