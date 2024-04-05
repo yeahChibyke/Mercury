@@ -14,7 +14,7 @@ export default function Username() {
     onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
       setUsername(doc.data()?.username);
     });
-  }, [user?.email]);
+  }, [user]);
 
   return (
     <>
