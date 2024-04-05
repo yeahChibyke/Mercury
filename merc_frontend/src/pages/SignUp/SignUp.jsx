@@ -87,7 +87,7 @@ export default function SignUp() {
       errorAlert();
     } else {
       // send data to wherever it's going here
-      console.log(formData);
+      // console.log(formData);
       //
       registerUser();
     }
@@ -115,7 +115,7 @@ export default function SignUp() {
         confirm: "",
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setTitle("Error");
       setSubitle(error.message);
       setBad(true);
@@ -192,7 +192,7 @@ export default function SignUp() {
             <FiArrowLeft size={20} /> <span className="font-[500]">Home</span>
           </NavLink>
         </div>
-        <div className="flex flex-col justify-center items-center pt-[10rem]">
+        <div className="flex flex-col justify-center items-center pt-[5rem] md:pt-[10rem]">
           <p className="text-5xl font-[500] text-center mb-[2rem]">Sign Up</p>
           <form
             onSubmit={handleSubmit}
@@ -256,9 +256,9 @@ export default function SignUp() {
                   }}
                 >
                   {showPassword ? (
-                    <IoEyeOutline className="h-full w-6 text-black" />
-                  ) : (
                     <IoEyeOffOutline className="h-full w-6 text-black" />
+                  ) : (
+                    <IoEyeOutline className="h-full w-6 text-black" />
                   )}
                 </div>
               </div>
@@ -285,9 +285,9 @@ export default function SignUp() {
                   }}
                 >
                   {showConfirmPassword ? (
-                    <IoEyeOutline className="h-full w-6 text-black" />
-                  ) : (
                     <IoEyeOffOutline className="h-full w-6 text-black" />
+                  ) : (
+                    <IoEyeOutline className="h-full w-6 text-black" />
                   )}
                 </div>
               </div>
