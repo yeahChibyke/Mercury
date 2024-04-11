@@ -8,14 +8,15 @@ import EditForm from "../../components/EditForm/EditForm";
 import { ethers } from "ethers";
 import { UserAuth } from "../../context/AuthContext";
 import { db } from "../../firebase/firebase";
-import { doc, onSnapshot, setDoc, updateDoc } from "firebase/firestore";
+import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { FaCircleCheck } from "react-icons/fa6";
 import { FaMinusCircle } from "react-icons/fa";
 import AlertModal from "../../components/Modals/AlertModal";
+import InteractModal from "../../components/Modals/InteractModal";
 
 export default function Account() {
   // state for wallet that will be displayed
-  const [defaultAccount, setDefaultAccount] = useState();
+  const [defaultAccount, setDefaultAccount] = useState(null);
 
   // state for connection status
   const [connected, setConnected] = useState(false);
@@ -39,6 +40,9 @@ export default function Account() {
   const [title, setTitle] = useState("");
   const [subtitle, setSubitle] = useState("");
 
+  // state for modal
+  const [modal, setModal] = useState();
+
   const { user } = UserAuth();
 
   // request a wallet to connect to
@@ -54,21 +58,23 @@ export default function Account() {
         console.log(address);
         walletChanged(address);
       } else {
-        window.ethereum.selectedAddress = null;
+        // window.ethereum.selectedAddress = null;
         setConnected(false);
         setTitle("Alert!");
-        setSubitle("Wallet is Connected..");
+        setSubitle("Wallet Has Been DisConnected..");
         setBad(true);
-        handleModal();
+        setDefaultAccount(null);
+        setLogo(false);
+        walletChanged(null);
       }
     } catch (error) {
       // console.log(error.message);
       setTitle("Alert!");
       if (
-        error.message ==
+        error.message ===
         "Cannot set property selectedAddress of #<f> which has only a getter"
       ) {
-        setSubitle("Wallet Already Connected");
+        setSubitle("Wallet Already Connected...");
       } else if (error.message) {
         setSubitle("Operation Stopped/Cancelled unexpectedly");
       }
@@ -79,12 +85,22 @@ export default function Account() {
 
   // wallet change handler
   const walletChanged = (incoming) => {
-    setDefaultAccount(incoming);
-    setWalletAddress(incoming);
-    setTitle("Success!");
-    setSubitle("Wallet Connected..");
-    setBad(false);
-    handleModal();
+    if (incoming) {
+      setDefaultAccount(incoming);
+      setWalletAddress(incoming);
+      setTitle("Success!");
+      setSubitle("Wallet Connected..");
+      setBad(false);
+      handleModal();
+    } else {
+      handleInteract();
+      setDefaultAccount(incoming);
+      setWalletAddress(incoming);
+      setTitle("Success!");
+      setSubitle("Wallet Disconnected..");
+      setBad(false);
+      handleModal();
+    }
   };
 
   //save wallet address to firestore
@@ -110,7 +126,7 @@ export default function Account() {
       setConnected(true);
       setLogo(true);
     }
-  });
+  },[defaultAccount]);
 
   // format wallet address
   const formatAddress = (here) => {
@@ -128,6 +144,11 @@ export default function Account() {
     }, 2000);
   };
 
+  // handle the  interactive modal
+  const handleInteract = () => {
+    setModal(!modal);
+  };
+
   return (
     <>
       <AlertModal
@@ -141,6 +162,13 @@ export default function Account() {
           <FaCheckCircle size={32} color="limegreen" />
         )}
       </AlertModal>
+      <InteractModal
+        title="Confirm"
+        subtitle="Are you sure you want to Disconnect Wallet?"
+        logout={requestWallet}
+        close={handleInteract}
+        classes={modal ? "show-interact" : ""}
+      ></InteractModal>
       <div className="relative z-[10] w-full h-full pt-[10rem] flex flex-col justify-center items-center">
         <div className="w-fit border-[2px] border-[#000] rounded-full absolute top-8 left-[4%]">
           <NavLink
@@ -183,8 +211,8 @@ export default function Account() {
           </div>
         </div>
         <CustomButton
-          onclick={requestWallet}
-          title="Connect Wallet"
+          onclick={connected ? handleInteract : requestWallet}
+          title={`${connected ? "Disconnect" : "Connect Wallet"}`}
           classes={"hero-btn transit"}
         />
       </div>
